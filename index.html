@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mio Bazar Mayorista</title>
+<meta name="description" content="Catálogo mayorista de Mio Bazar. 20% de descuento sobre el precio de lista. Compra mínima $300.000." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <span class="brand__mark">MB</span>
+        <div class="brand__text">
+          <strong>Mio Bazar</strong>
+          <span>Mayorista</span>
+        </div>
+      </div>
+      <button class="cart-toggle" id="cartToggle" aria-label="Abrir carrito">
+        <span class="cart-toggle__label">Pedido</span>
+        <span class="cart-toggle__count" id="cartCount">0</span>
+        <span class="cart-toggle__total" id="cartTotalMini">$0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Lista de precios mayorista — vigente hoy</p>
+      <h1>20% off de lista.<br>Mínimo $300.000.</h1>
+      <p class="hero__sub">Armá tu pedido, llegá al mínimo y lo cerramos por WhatsApp. Stock sincronizado con la tienda en tiempo real.</p>
+    </div>
+  </section>
+
+  <main class="catalog">
+    <div class="catalog__controls">
+      <input type="search" id="searchInput" placeholder="Buscar producto…" autocomplete="off" />
+      <span class="catalog__count" id="resultsCount"></span>
+    </div>
+
+    <div id="grid" class="grid" aria-live="polite"></div>
+
+    <div class="catalog__loadmore" id="loadMoreWrap" hidden>
+      <button id="loadMoreBtn">Ver más productos</button>
+    </div>
+
+    <p id="emptyState" class="empty-state" hidden>No encontramos productos con ese nombre.</p>
+    <p id="loadingState" class="loading-state">Cargando catálogo…</p>
+    <p id="errorState" class="error-state" hidden></p>
+  </main>
+
+  <!-- Carrito / hoja de pedido -->
+  <aside class="cart" id="cartPanel" aria-hidden="true">
+    <div class="cart__sheet">
+      <header class="cart__header">
+        <h2>Hoja de pedido</h2>
+        <button class="cart__close" id="cartClose" aria-label="Cerrar carrito">✕</button>
+      </header>
+
+      <div class="cart__lines" id="cartLines">
+        <p class="cart__empty" id="cartEmptyMsg">Todavía no agregaste productos.</p>
+      </div>
+
+      <footer class="cart__footer">
+        <div class="cart__progress">
+          <div class="cart__progress-row">
+            <span>Mínimo de compra</span>
+            <span id="progressLabel">$0 / $300.000</span>
+          </div>
+          <div class="cart__progress-track">
+            <div class="cart__progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="cart__total-row">
+          <span>Total</span>
+          <strong id="cartTotal">$0</strong>
+        </div>
+
+        <button id="checkoutBtn" class="checkout-btn" disabled>
+          Te faltan <span id="missingAmount">$300.000</span> para el mínimo
+        </button>
+        <p class="cart__hint">Al finalizar se abre WhatsApp con el listado y las cantidades. El cierre de venta (pago y envío) se coordina ahí.</p>
+      </footer>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
